@@ -6,3 +6,8 @@
 # Exemplo de execução
 
 `python main.py --url http://192.168.2.254 --senha senha@roteador --pppoe 1234andzilla`
+
+# To-do 
+
+- [ ] Tornas args obrigatorios
+- [ ] verificar se não vai mandar infos erradas antes de executar

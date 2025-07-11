@@ -1,8 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from time import sleep
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
+import time
 
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -11,16 +12,26 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+import argparse
 
-URL_ROTEADOR = "http://192.168.2.254"
-SENHA_ROTEADOR = "gigaweb@cliente"
-LOGIN_PPPOE = "12113gabriel"
+parser = argparse.ArgumentParser()
+parser.add_argument("--url")
+parser.add_argument("--senha")
+parser.add_argument("--pppoe")
 
-# var = input("URL do roteador:")
+args = parser.parse_args()
 
-# 12113gabriel
+arg_url = args.url
+arg_senha = args.senha
+arg_pppoe = args.pppoe
 
-# Rodar em segundo plano
+# Se não for passado nenhum arg ira usar o valor padrão da direita
+URL_ROTEADOR = arg_url or "http://192.168.2.254"
+SENHA_ROTEADOR = arg_senha or "gigaweb@cliente"
+LOGIN_PPPOE = arg_pppoe or "teste4"
+
+
+# Descomentar caso queira que rode em segundo plano (sem o navegador aparecer)
 # options = Options()
 # options.add_argument("--headless=new")
 # options.add_argument("--window-size=1920,1080")
@@ -45,19 +56,30 @@ login_button.click()
 
 
 # Verifica e aperta para logar mesmo assim se alguém estiver já logado no roteador
-login_confirm_button = wait.until(
-    EC.presence_of_element_located((By.ID, "confirm-yes"))
-)
-if login_confirm_button:
+try:
+    login_confirm_button = WebDriverWait(nav, 5).until(
+        EC.presence_of_element_located((By.ID, "confirm-yes"))
+    )
     login_confirm_button.click()
+except:
+    pass
 
 advanced_button = wait.until(EC.presence_of_element_located((By.ID, "advanced")))
 advanced_button.click()
 
-network_button = wait.until(
-    EC.presence_of_element_located((By.XPATH, '//*[@id="menuTree"]/li[2]/a'))
-)
-network_button.click()
+for attempt in range(3):
+    try:
+        network_button = wait.until(
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="menuTree"]/li[2]/a'))
+        )
+        network_button.click()
+        break  # Se clicou com sucesso, sai do loop
+    except StaleElementReferenceException:
+        print("Elemento ficou obsoleto. Tentando novamente...")
+        time.sleep(1)
+    except TimeoutException:
+        print("Elemento não apareceu a tempo.")
+        break
 
 gpon_button = wait.until(
     EC.presence_of_element_located(
@@ -85,4 +107,4 @@ ActionChains(nav).move_to_element(save_pppoe_button).perform()
 
 save_pppoe_button.click()
 
-
+nav.quit()

@@ -9,5 +9,6 @@
 
 # To-do 
 
-- [ ] Tornas args obrigatorios
+- [ ] Tornas args obrigatorios por padrão 
 - [ ] verificar se não vai mandar infos erradas antes de executar
+- [ ] Rodar em segundo plano por padrão 

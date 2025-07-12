@@ -1,59 +1,66 @@
+import os
+import time
+import argparse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
-import time
-
 from selenium.webdriver.support.ui import WebDriverWait
-
-# Descomentar caso queira que rode em segundo plano (sem o navegador aparecer)
-# from selenium.webdriver.chrome.options import Options
-
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-import argparse
+
+# Verifica se o argumento é vazio
+def non_empty_string(value):
+    value = str(value).strip()
+    if not value:
+        raise argparse.ArgumentTypeError("Este campo não pode estar vazio.")
+    return value
+
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--url")
-parser.add_argument("--senha")
-parser.add_argument("--pppoe")
+parser.add_argument(
+    "--url", required=True, type=non_empty_string, help="URL do roteador"
+)
+parser.add_argument(
+    "--senha", required=True, type=non_empty_string, help="Senha do Roteador"
+)
+parser.add_argument("--pppoe", required=True, type=non_empty_string, help="Login PPPoE")
 
 args = parser.parse_args()
 
-arg_url = args.url
-arg_senha = args.senha
-arg_pppoe = args.pppoe
+# Constantes
+URL_ROTEADOR = args.url
+SENHA_ROTEADOR = args.senha
+LOGIN_PPPOE = args.pppoe
 
-# Se não for passado nenhum arg ira usar o valor padrão da direita
-URL_ROTEADOR = arg_url or "http://192.168.2.254"
-SENHA_ROTEADOR = arg_senha or "gigaweb@cliente"
-LOGIN_PPPOE = arg_pppoe or "teste4"
+options = Options()
+# Comentar option abaixo para deixar o Chrome aparecendo
+options.add_argument("--headless=new")
+options.add_argument("--window-size=1920,1080")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-gpu")
+options.add_argument("--log-level=3")
+options.add_argument("--silent")
 
+service = Service(ChromeDriverManager().install(), log_path=os.devnull)
 
-# Descomentar caso queira que rode em segundo plano (sem o navegador aparecer)
-# options = Options()
-# options.add_argument("--headless=new")
-# options.add_argument("--window-size=1920,1080")
-
-# Abri o navegador
-nav = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-
-# Descomentar e excluir a linha de cima caso queira que rode em segundo plano
-# nav = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+# Abre o navegador
+nav = webdriver.Chrome(
+    service=service,
+    options=options,
+)
 
 wait = WebDriverWait(nav, 10)
 
 nav.get(URL_ROTEADOR)
-
-nav.maximize_window()
 
 login_input = wait.until(EC.presence_of_element_located((By.ID, "pc-login-password")))
 login_input.send_keys(SENHA_ROTEADOR)
 
 login_button = wait.until(EC.presence_of_element_located((By.ID, "pc-login-btn")))
 login_button.click()
-
 
 # Verifica e aperta para logar mesmo assim se alguém estiver já logado no roteador
 try:
@@ -82,9 +89,7 @@ for attempt in range(3):
         break
 
 gpon_button = wait.until(
-    EC.presence_of_element_located(
-        (By.XPATH, '//*[@id="menuTree"]/li[2]/ul/li[1]/a/span')
-    )
+    EC.element_to_be_clickable((By.XPATH, '//*[@id="menuTree"]/li[2]/ul/li[1]/a/span'))
 )
 gpon_button.click()
 
@@ -108,3 +113,5 @@ ActionChains(nav).move_to_element(save_pppoe_button).perform()
 save_pppoe_button.click()
 
 nav.quit()
+
+print("PPPoE Trocado com sucesso!")

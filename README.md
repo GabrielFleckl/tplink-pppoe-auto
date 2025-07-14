@@ -1,7 +1,7 @@
 # Rodar no terminal na pasta raiz e ser feliz
 
-`pip install -r requirements.txt`
-
+1. Crie um venv: `python -m venv venv`
+2. Instale os requisitos: `pip install -r requirements.txt`
 
 # Exemplo de execução
 
@@ -12,6 +12,6 @@
 - [x] Tornas args obrigatórios por padrão 
 - [x] verificar se não vai mandar infos erradas antes de executar
 - [x] Rodar em segundo plano por padrão
+- [x] Rodar sem precisar instalar um navegador
+- [ ] Teste no Linux
 - [ ] Validar URL e senha do roteador
-- [ ] Acoplar o ungoogled chromium ao codigo para rodar sem precisar instalar um navegador
-  - https://ungoogled-software.github.io/ungoogled-chromium-binaries/releases/linux_portable/64bit/

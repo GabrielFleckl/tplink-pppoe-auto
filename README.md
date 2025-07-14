@@ -13,4 +13,5 @@
 - [x] verificar se não vai mandar infos erradas antes de executar
 - [x] Rodar em segundo plano por padrão
 - [ ] Validar URL e senha do roteador
-- [ ] Validar se roda em o google chrome instalado 
+- [ ] Acoplar o ungoogled chromium ao codigo para rodar sem precisar instalar um navegador
+  - https://ungoogled-software.github.io/ungoogled-chromium-binaries/releases/linux_portable/64bit/

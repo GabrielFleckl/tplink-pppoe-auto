@@ -11,4 +11,6 @@
 
 - [x] Tornas args obrigatórios por padrão 
 - [x] verificar se não vai mandar infos erradas antes de executar
-- [x] Rodar em segundo plano por padrão 
+- [x] Rodar em segundo plano por padrão
+- [ ] Validar URL e senha do roteador
+- [ ] Validar se roda em o google chrome instalado 

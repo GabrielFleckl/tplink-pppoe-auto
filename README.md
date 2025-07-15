@@ -1,14 +1,18 @@
 # Rodar no terminal na pasta raiz e ser feliz
 
-1. Crie um venv: `python -m venv venv`
+1. Crie um venv: 
+  - `sudo apt install python3.12-venv`
+  - `python -m venv venv`
 2. Execute o venv: `source venv/bin/activate`
 3. Instale os requisitos: `pip install -r requirements.txt`
-4. Baixe e deixe o Chromium: 
-  
+4. Baixe o Chromium: 
+
 ``` bash 
 sudo apt update
 sudo apt install -y chromium-browser chromium-chromedriver
 ```
+
+5. Seja feliz
 
 **Chromium e bibliotecas são obrigatórias para rodar o projeto**
 
@@ -33,4 +37,4 @@ sudo apt install -y chromium-browser chromium-chromedriver
 - [x] Teste no Linux
 - [x] Validar URL e senha do roteador
 - [x] Teste no Ubuntu Server
-- [ ] Log de ações feitas pela automação no terminal
+- [x] Log de ações feitas pela automação no terminal

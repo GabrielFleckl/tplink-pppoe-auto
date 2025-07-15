@@ -42,3 +42,4 @@
 - [x] Rodar sem precisar instalar um navegador
 - [x] Teste no Linux
 - [x] Validar URL e senha do roteador
+- [ ] Teste no Ubuntu Server

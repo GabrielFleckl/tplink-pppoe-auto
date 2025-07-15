@@ -1,26 +1,16 @@
 # Rodar no terminal na pasta raiz e ser feliz
 
 1. Crie um venv: `python -m venv venv`
-2. Instale os requisitos: `pip install -r requirements.txt`
-3. Baixe e deixe o Chromium na versão do seu sistema na raiz do projeto: 
-   - `https://drive.google.com/file/d/1o3kI6FXk4VZ_IGJFHQuRsbgOSfochcid/view`
+2. Execute o venv: `source venv/bin/activate`
+3. Instale os requisitos: `pip install -r requirements.txt`
+4. Baixe e deixe o Chromium: 
+  
+``` bash 
+sudo apt update
+sudo apt install -y chromium-browser chromium-chromedriver
+```
 
 **Chromium e bibliotecas são obrigatórias para rodar o projeto**
-
-# Exemplo de como deve ficar a pasta raiz
-
-*Pode deixar apenas a pasta do Chromium do seu respectivo sistema*
-
-``` bash
-.
-├── chromium_linux/
-├── chromium-win/
-├── venv/
-├── .gitignore
-├── main.py
-├── README.md
-└── requirements.txt
-```
 
 # Exemplo de execução
 
@@ -42,5 +32,5 @@
 - [x] Rodar sem precisar instalar um navegador
 - [x] Teste no Linux
 - [x] Validar URL e senha do roteador
-- [ ] Teste no Ubuntu Server
+- [x] Teste no Ubuntu Server
 - [ ] Log de ações feitas pela automação no terminal

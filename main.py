@@ -1,13 +1,15 @@
 import os
 import time
 import argparse
-import platform
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.common.exceptions import StaleElementReferenceException, TimeoutException, WebDriverException
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import (
+    StaleElementReferenceException,
+    TimeoutException,
+    WebDriverException
+)
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
@@ -18,34 +20,9 @@ def validar_argumento(value):
     return value
 
 
-def configurar_chromium():
-    so = platform.system()
-    base_dir = os.getcwd()
-
-    if so == "Windows":
-        chromium_dir = os.path.join(base_dir, "chromium-win")
-        chrome_exec = os.path.join(chromium_dir, "chrome.exe")
-        chromedriver_exec = os.path.join(chromium_dir, "chromedriver.exe")
-    elif so == "Linux":
-        chromium_dir = os.path.join(base_dir, "chromium_linux")
-        chrome_exec = os.path.join(chromium_dir, "chrome")
-        chromedriver_exec = os.path.join(chromium_dir, "chromedriver")
-        os.chmod(chrome_exec, 0o755)
-        os.chmod(chromedriver_exec, 0o755)
-    else:
-        raise Exception("Sistema operacional não suportado.")
-
-    if not os.path.exists(chrome_exec):
-        raise FileNotFoundError(f"Chromium não encontrado em: {chrome_exec}")
-    if not os.path.exists(chromedriver_exec):
-        raise FileNotFoundError(f"ChromeDriver não encontrado em: {chromedriver_exec}")
-
-    return chrome_exec, chromedriver_exec
-
-
-def configurar_driver(chrome_exec, chromedriver_exec):
+def configurar_driver():
+    print("Iniciando")
     options = Options()
-    options.binary_location = chrome_exec
     options.add_argument("--headless=new")
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--no-sandbox")
@@ -53,9 +30,9 @@ def configurar_driver(chrome_exec, chromedriver_exec):
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--log-level=3")
     options.add_argument("--silent")
+    options.add_argument("--user-data-dir=/tmp/chrome-profile")  
 
-    service = Service(chromedriver_exec)
-    return webdriver.Chrome(service=service, options=options)
+    return webdriver.Chrome(options=options)
 
 
 def realizar_login(nav, wait, url, senha):
@@ -83,7 +60,7 @@ def realizar_login(nav, wait, url, senha):
             confirm_btn = WebDriverWait(nav, 5).until(EC.presence_of_element_located((By.ID, "confirm-yes")))
             nav.execute_script("arguments[0].click();", confirm_btn)
         except:
-            pass
+            pass  # botão de confirmação nem sempre aparece
 
         advanced_button = wait.until(EC.element_to_be_clickable((By.ID, "advanced")))
         nav.execute_script("arguments[0].click();", advanced_button)
@@ -117,7 +94,6 @@ def navegar_para_pppoe(nav, wait):
 
 
 def alterar_pppoe_login(nav, wait, pppoe_login):
-
     login_input = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
     nav.execute_script("arguments[0].scrollIntoView(true);", login_input)
     login_input.clear()
@@ -142,8 +118,7 @@ URL_ROTEADOR = args.url
 SENHA_ROTEADOR = args.senha
 LOGIN_PPPOE = args.pppoe
 
-chrome_exec, chromedriver_exec = configurar_chromium()
-nav = configurar_driver(chrome_exec, chromedriver_exec)
+nav = configurar_driver()
 wait = WebDriverWait(nav, 15)
 
 realizar_login(nav, wait, URL_ROTEADOR, SENHA_ROTEADOR)

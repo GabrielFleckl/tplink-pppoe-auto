@@ -51,7 +51,7 @@ def realizar_login(nav, wait, url, senha):
         print("LOG: Entrou na tela de login")
         login_input = wait.until(EC.visibility_of_element_located((By.ID, "pc-login-password")))
         nav.execute_script("arguments[0].scrollIntoView(true);", login_input)
-        print("LOG: Colocou a senha do roteador")
+        print("LOG: Preencheu a senha do roteador")
         login_input.send_keys(senha)
 
         login_button = wait.until(EC.element_to_be_clickable((By.ID, "pc-login-btn")))

@@ -116,6 +116,7 @@ def navegar_para_pppoe(nav, wait):
 
 def alterar_pppoe_login(wait, pppoe_login):
     login_input = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
+    ActionChains(nav).move_to_element(login_input).perform()
     login_input.clear()
     login_input.send_keys(pppoe_login)
 

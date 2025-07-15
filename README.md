@@ -2,7 +2,7 @@
 
 1. Crie um venv: `python -m venv venv`
 2. Instale os requisitos: `pip install -r requirements.txt`
-3. Baixe e deixe o Chromium na versão do seus sistema na raiz do projeto: 
+3. Baixe e deixe o Chromium na versão do seu sistema na raiz do projeto: 
    - `https://drive.google.com/file/d/1o3kI6FXk4VZ_IGJFHQuRsbgOSfochcid/view`
 
 **Chromium e bibliotecas são obrigatórias para rodar o projeto**

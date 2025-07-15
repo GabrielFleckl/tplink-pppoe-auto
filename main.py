@@ -9,7 +9,6 @@ from selenium.common.exceptions import StaleElementReferenceException, TimeoutEx
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
 
 
 def validar_argumento(value):
@@ -72,21 +71,22 @@ def realizar_login(nav, wait, url, senha):
         exit(1)
 
     try:
-        login_input = wait.until(EC.presence_of_element_located((By.ID, "pc-login-password")))
+        login_input = wait.until(EC.visibility_of_element_located((By.ID, "pc-login-password")))
+        nav.execute_script("arguments[0].scrollIntoView(true);", login_input)
         login_input.send_keys(senha)
 
-        login_button = wait.until(EC.presence_of_element_located((By.ID, "pc-login-btn")))
+        login_button = wait.until(EC.element_to_be_clickable((By.ID, "pc-login-btn")))
+        nav.execute_script("arguments[0].scrollIntoView(true);", login_button)
         login_button.click()
 
-        # Ignora caso já esteja logado
         try:
             confirm_btn = WebDriverWait(nav, 5).until(EC.presence_of_element_located((By.ID, "confirm-yes")))
-            confirm_btn.click()
+            nav.execute_script("arguments[0].click();", confirm_btn)
         except:
             pass
 
-        advanced_button = wait.until(EC.presence_of_element_located((By.ID, "advanced")))
-        advanced_button.click()
+        advanced_button = wait.until(EC.element_to_be_clickable((By.ID, "advanced")))
+        nav.execute_script("arguments[0].click();", advanced_button)
 
     except TimeoutException:
         print("❌ Erro de login. Verifique a senha ou a interface do roteador.")
@@ -95,12 +95,11 @@ def realizar_login(nav, wait, url, senha):
 
 
 def navegar_para_pppoe(nav, wait):
-    # Clicar em Network
     for attempt in range(3):
         try:
-            time.sleep(2)
+            time.sleep(1.5)
             network_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="menuTree"]/li[2]/a')))
-            network_button.click()
+            nav.execute_script("arguments[0].click();", network_button)
             break
         except StaleElementReferenceException:
             print("Elemento obsoleto. Tentando novamente...")
@@ -108,25 +107,29 @@ def navegar_para_pppoe(nav, wait):
             print("Elemento 'Network' não apareceu a tempo.")
             return False
 
-    # GPON > PPPoE
-    wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="menuTree"]/li[2]/ul/li[1]/a/span'))).click()
-    wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="wanBody"]/tr[3]/td[7]/span[1]'))).click()
+    gpon_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="menuTree"]/li[2]/ul/li[1]/a/span')))
+    nav.execute_script("arguments[0].click();", gpon_button)
+
+    pppoe_button = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="wanBody"]/tr[3]/td[7]/span[1]')))
+    nav.execute_script("arguments[0].click();", pppoe_button)
+
     return True
 
 
-def alterar_pppoe_login(wait, pppoe_login):
+def alterar_pppoe_login(nav, wait, pppoe_login):
+
     login_input = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
-    ActionChains(nav).move_to_element(login_input).perform()
+    nav.execute_script("arguments[0].scrollIntoView(true);", login_input)
     login_input.clear()
     login_input.send_keys(pppoe_login)
 
-    save_button = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="saveConnBtn"]')))
-    ActionChains(nav).move_to_element(save_button).perform()
-    save_button.click()
+    save_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="saveConnBtn"]')))
+    nav.execute_script("arguments[0].scrollIntoView(true);", save_button)
+    nav.execute_script("arguments[0].click();", save_button)
 
 
 # -------------------------
-# Ponto de entrada principal
+# Execução principal
 # -------------------------
 
 parser = argparse.ArgumentParser()
@@ -139,7 +142,6 @@ URL_ROTEADOR = args.url
 SENHA_ROTEADOR = args.senha
 LOGIN_PPPOE = args.pppoe
 
-# Início do processo
 chrome_exec, chromedriver_exec = configurar_chromium()
 nav = configurar_driver(chrome_exec, chromedriver_exec)
 wait = WebDriverWait(nav, 15)
@@ -147,7 +149,7 @@ wait = WebDriverWait(nav, 15)
 realizar_login(nav, wait, URL_ROTEADOR, SENHA_ROTEADOR)
 
 if navegar_para_pppoe(nav, wait):
-    alterar_pppoe_login(wait, LOGIN_PPPOE)
+    alterar_pppoe_login(nav, wait, LOGIN_PPPOE)
     print("✅ PPPoE trocado com sucesso!")
 else:
     print("❌ Falha ao acessar a área de configuração PPPoE.")

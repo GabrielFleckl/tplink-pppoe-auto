@@ -5,7 +5,11 @@
 3. Baixe e deixe o Chromium na versão do seus sistema na raiz do projeto: 
    - `https://drive.google.com/file/d/1o3kI6FXk4VZ_IGJFHQuRsbgOSfochcid/view`
 
+**Chromium e bibliotecas são obrigatórias para rodar o projeto**
+
 # Exemplo de como deve ficar a pasta raiz
+
+*Pode deixar apenas a pasta do Chromium do seu respectivo sistema*
 
 ``` bash
 .

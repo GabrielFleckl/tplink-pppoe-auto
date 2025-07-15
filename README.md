@@ -15,4 +15,4 @@
 - [x] Rodar em segundo plano por padrão
 - [x] Rodar sem precisar instalar um navegador
 - [x] Teste no Linux
-- [ ] Validar URL e senha do roteador
+- [x] Validar URL e senha do roteador

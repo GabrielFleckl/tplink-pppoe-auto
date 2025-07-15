@@ -2,11 +2,33 @@
 
 1. Crie um venv: `python -m venv venv`
 2. Instale os requisitos: `pip install -r requirements.txt`
-3. Baixe o Chromium portable e deixe as 2 pastas na raiz: `https://drive.google.com/file/d/1o3kI6FXk4VZ_IGJFHQuRsbgOSfochcid/view`
+3. Baixe e deixe o Chromium na versão do seus sistema na raiz do projeto: 
+   - `https://drive.google.com/file/d/1o3kI6FXk4VZ_IGJFHQuRsbgOSfochcid/view`
+
+# Exemplo de como deve ficar a pasta raiz
+
+``` bash
+.
+├── chromium_linux/
+├── chromium-win/
+├── venv/
+├── .gitignore
+├── main.py
+├── README.md
+└── requirements.txt
+```
 
 # Exemplo de execução
 
-`python main.py --url http://192.168.2.254 --senha senha@roteador --pppoe 1234andzilla`
+`python main.py --url http://192.168.2.254 --senha admin@7777 --pppoe 1234andzilla`
+
+- URL precisa ser `http` ou `https`
+- Nenhum argumento pode ser vazio
+
+  ## Flags
+  - `--url` (Link para o roteador)
+  - `--senha` (Senha do roteador)
+  - `--pppoe` (Login PPPoE)
 
 # To-do 
 

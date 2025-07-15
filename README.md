@@ -43,3 +43,4 @@
 - [x] Teste no Linux
 - [x] Validar URL e senha do roteador
 - [ ] Teste no Ubuntu Server
+- [ ] Log de ações feitas pela automação no terminal

@@ -14,5 +14,5 @@
 - [x] verificar se não vai mandar infos erradas antes de executar
 - [x] Rodar em segundo plano por padrão
 - [x] Rodar sem precisar instalar um navegador
-- [ ] Teste no Linux
+- [x] Teste no Linux
 - [ ] Validar URL e senha do roteador

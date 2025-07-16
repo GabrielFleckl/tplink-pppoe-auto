@@ -48,7 +48,7 @@ def realizar_login(nav, wait, url, senha):
         exit(1)
 
     try:
-        print("LOG: Entrou na tela de login")
+        print("LOG: Entrou na tela de login: " + url)
         login_input = wait.until(EC.visibility_of_element_located((By.ID, "pc-login-password")))
         nav.execute_script("arguments[0].scrollIntoView(true);", login_input)
         print("LOG: Preencheu a senha do roteador")
@@ -106,7 +106,7 @@ def alterar_pppoe_login(nav, wait, pppoe_login):
     nav.execute_script("arguments[0].scrollIntoView(true);", login_input)
     login_input.clear()
     login_input.send_keys(pppoe_login)
-    print("LOG: Preencheu o login PPPoE")
+    print("LOG: Preencheu o login PPPoE com: " + pppoe_login)
 
     save_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="saveConnBtn"]')))
     nav.execute_script("arguments[0].scrollIntoView(true);", save_button)

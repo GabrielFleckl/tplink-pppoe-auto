@@ -1,5 +1,7 @@
 # Rodar no terminal na pasta raiz e ser feliz
 
+> **O venv é opcional, você pode pular para o passo 3. caso não tenha interesse em criar**
+
 1. Crie um venv: 
   - `sudo apt install python3.12-venv`
   - `python -m venv venv`

@@ -40,3 +40,4 @@ sudo apt install -y chromium-browser chromium-chromedriver
 - [x] Validar URL e senha do roteador
 - [x] Teste no Ubuntu Server
 - [x] Log de ações feitas pela automação no terminal
+- [ ] Pasta de logs

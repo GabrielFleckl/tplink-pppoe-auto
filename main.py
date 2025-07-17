@@ -8,14 +8,27 @@ from selenium.common.exceptions import StaleElementReferenceException, TimeoutEx
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import logging
+from logging.handlers import TimedRotatingFileHandler
 
 
-def configurar_logging():
+def configura_logger():
+    os.makedirs("log", exist_ok=True)
+
     logging.basicConfig(
         level=logging.INFO,
         format="|%(levelname)s| [%(asctime)s] %(message)s",
         datefmt="%d/%m/%Y %H:%M:%S",
     )
+
+    logger = logging.getLogger()
+    
+    handler = TimedRotatingFileHandler(
+        filename="log/tp_link.log", when="midnight", interval=1, backupCount=0, encoding="utf-8", utc=False
+    )
+    
+    formatter = logging.Formatter("|%(levelname)s| [%(asctime)s] %(message)s")
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
 
 
 def validar_argumento(value):
@@ -71,8 +84,6 @@ def realizar_login(nav, wait, url, senha):
         except:
             pass
 
-        
-
         advanced_button = wait.until(EC.element_to_be_clickable((By.ID, "advanced")))
         logging.info("Fez login no roteador")
         nav.execute_script("arguments[0].click();", advanced_button)
@@ -126,6 +137,8 @@ def alterar_pppoe_login(nav, wait, pppoe_login):
 # Execução principal
 # -------------------------
 
+configura_logger()
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--url", required=True, type=validar_argumento, help="URL do roteador")
 parser.add_argument("--senha", required=True, type=validar_argumento, help="Senha do roteador")
@@ -136,7 +149,6 @@ URL_ROTEADOR = args.url
 SENHA_ROTEADOR = args.senha
 LOGIN_PPPOE = args.pppoe
 
-configurar_logging()
 
 nav = configurar_driver()
 wait = WebDriverWait(nav, 15)

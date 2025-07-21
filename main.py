@@ -21,11 +21,11 @@ def configura_logger():
     )
 
     logger = logging.getLogger()
-    
+
     handler = TimedRotatingFileHandler(
         filename="log/tp_link.log", when="midnight", interval=1, backupCount=0, encoding="utf-8", utc=False
     )
-    
+
     formatter = logging.Formatter("|%(levelname)s| [%(asctime)s] %(message)s")
     handler.setFormatter(formatter)
     logger.addHandler(handler)
@@ -113,9 +113,25 @@ def navegar_para_pppoe(nav, wait):
     nav.execute_script("arguments[0].click();", gpon_button)
     logging.info("Clicou no GPON WAN dentro da barra lateral")
 
-    pppoe_button = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="wanBody"]/tr[3]/td[7]/span[1]')))
-    nav.execute_script("arguments[0].click();", pppoe_button)
-    logging.info("Clicou na interface PPPoE para modificar")
+    # Verifica e clica na interface Internet independente da ordem das linhas da tabela
+
+    logging.info("Aguardando as linhas da tabela WAN...")
+    wait.until(EC.visibility_of_any_elements_located((By.CSS_SELECTOR, "#wanBody > tr:not(#editContainer)")))
+    logging.info("Linhas carregadas!")
+
+    linhas = nav.find_elements(By.CSS_SELECTOR, "#wanBody > tr:not(#editContainer)")
+
+    for i, linha in enumerate(linhas):
+        colunas = linha.find_elements(By.TAG_NAME, "td")
+
+        if len(colunas) >= 2 and colunas[1].text.strip().lower() == "internet":
+            try:
+                botao_editar = colunas[6].find_element(By.CLASS_NAME, "edit-modify-icon")
+                nav.execute_script("arguments[0].click();", botao_editar)
+                logging.info("Botão editar da Internet clicado com sucesso!")
+            except Exception as e:
+                logging.error(f"❌ Erro ao clicar no botão de editar: {e}")
+            break
 
     return True
 

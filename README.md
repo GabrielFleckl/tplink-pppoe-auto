@@ -44,4 +44,5 @@ sudo apt install -y chromium-browser chromium-chromedriver
 - [x] Teste no Ubuntu Server
 - [x] Log de ações feitas pela automação no terminal
 - [x] Pasta de logs
-- [ ] Testar compatibilidade com modelos TP-LINK xx530, xx530V2, x141, x511
+- [ ] Teste no xx530
+- [ ] Testar compatibilidade com modelos TP-LINK xx530, xx530V2, x141, EX511, EX220, EX520

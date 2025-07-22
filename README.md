@@ -47,10 +47,11 @@ sudo apt install -y chromium-browser chromium-chromedriver
 - [x] Log de ações feitas pela automação no terminal
 - [x] Pasta de logs
 - [ ] Testar compatibilidade com modelos TP-LINK 
+  - [x] xx530
+  - [x] xx530v2
+  - [ ] EX520
+  - [ ] EX511
+  - [ ] EX220
+  - [ ] EX141
+  - [ ] C20
   
-  ``` bash 
-  UI 1
-  EX511,C20,EX141,EX220, EX520
-  UI 2
-  xx530, xx530V2, 
-  ```

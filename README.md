@@ -35,6 +35,7 @@ sudo apt install -y chromium-browser chromium-chromedriver
 
 # To-do 
 
+- [ ] Verifica o modelo do roteador e roda um metodo proprio para aquele modelo
 - [x] Tornas args obrigatórios por padrão 
 - [x] verificar se não vai mandar infos erradas antes de executar
 - [x] Rodar em segundo plano por padrão
@@ -45,4 +46,11 @@ sudo apt install -y chromium-browser chromium-chromedriver
 - [x] Log de ações feitas pela automação no terminal
 - [x] Pasta de logs
 - [ ] Teste no xx530
-- [ ] Testar compatibilidade com modelos TP-LINK xx530, xx530V2, x141, EX511, EX220, EX520
+- [ ] Testar compatibilidade com modelos TP-LINK 
+  
+  ``` bash 
+  UI 1
+  EX511,C20,EX141,EX220, EX520
+  UI 2
+  xx530, xx530V2, 
+  ```

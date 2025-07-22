@@ -23,7 +23,7 @@ sudo apt install -y chromium-browser chromium-chromedriver
 
 # Exemplo de execução
 
-`python main.py --url http://192.168.2.254 --senha admin@7777 --pppoe 1234andzilla`
+`python main.py --url http://192.168.2.254 --senha admin@7777 --pppoe 1234andzilla --modelo xx530`
 
 - URL precisa ser `http` ou `https`
 - Nenhum argumento pode ser vazio
@@ -32,6 +32,7 @@ sudo apt install -y chromium-browser chromium-chromedriver
   - `--url` (Link para o roteador)
   - `--senha` (Senha do roteador)
   - `--pppoe` (Login PPPoE)
+  - `--modelo` (Modelo do roteador)
 
 # To-do 
 

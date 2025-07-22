@@ -1,0 +1,105 @@
+|INFO| [2025-07-21 19:31:57,912] Iniciando automação...
+|INFO| [2025-07-21 19:34:06,522] Iniciando automação...
+|INFO| [2025-07-21 19:34:08,936] Entrou na tela de login: http://100.64.14.113:8181
+|INFO| [2025-07-21 19:34:08,983] Preencheu a senha do roteador
+|INFO| [2025-07-21 19:34:09,162] Clicou no botão de login
+|INFO| [2025-07-21 19:34:10,566] Clicou no botão para confirmar o login
+|INFO| [2025-07-21 19:34:10,951] Fez login no roteador
+|INFO| [2025-07-21 19:34:11,212] Clicou no advanced
+|INFO| [2025-07-21 19:34:12,779] Clicou no network
+|INFO| [2025-07-21 19:34:13,361] Clicou no GPON WAN dentro da barra lateral
+|INFO| [2025-07-21 19:34:13,361] Aguardando as linhas da tabela WAN...
+|INFO| [2025-07-21 19:34:13,916] Linhas carregadas!
+|INFO| [2025-07-21 19:34:14,033] Botão editar da Internet clicado com sucesso!
+|INFO| [2025-07-21 19:34:15,905] Preencheu o login PPPoE com: 7717gabriel
+|INFO| [2025-07-21 19:34:15,970] Clicou no botão para salvar
+|INFO| [2025-07-21 19:34:15,970] ✅ PPPoE trocado com sucesso!
+|INFO| [2025-07-21 19:35:51,656] Iniciando automação...
+|INFO| [2025-07-21 19:35:54,279] Entrou na tela de login: http://100.64.14.113:8181
+|INFO| [2025-07-21 19:35:54,343] Preencheu a senha do roteador
+|INFO| [2025-07-21 19:35:54,528] Clicou no botão de login
+|INFO| [2025-07-21 19:35:54,560] Clicou no botão para confirmar o login
+|INFO| [2025-07-21 19:35:59,355] Fez login no roteador
+|INFO| [2025-07-21 19:35:59,551] Clicou no advanced
+|INFO| [2025-07-21 19:36:01,160] Clicou no network
+|INFO| [2025-07-21 19:36:01,798] Clicou no GPON WAN dentro da barra lateral
+|INFO| [2025-07-21 19:36:01,798] Aguardando as linhas da tabela WAN...
+|INFO| [2025-07-21 19:36:02,343] Linhas carregadas!
+|INFO| [2025-07-21 19:36:02,438] Botão editar da Internet clicado com sucesso!
+|INFO| [2025-07-21 19:36:04,066] Preencheu o login PPPoE com: 7717gabriel
+|INFO| [2025-07-21 19:36:04,132] Clicou no botão para salvar
+|INFO| [2025-07-21 19:36:04,133] ✅ PPPoE trocado com sucesso!
+|INFO| [2025-07-21 19:36:22,335] Iniciando automação...
+|INFO| [2025-07-21 19:36:24,184] Entrou na tela de login: http://100.64.14.113:8181
+|INFO| [2025-07-21 19:36:24,774] Preencheu a senha do roteador
+|INFO| [2025-07-21 19:36:24,973] Clicou no botão de login
+|INFO| [2025-07-21 19:36:25,015] Clicou no botão para confirmar o login
+|INFO| [2025-07-21 19:36:29,527] Fez login no roteador
+|INFO| [2025-07-21 19:36:29,928] Clicou no advanced
+|INFO| [2025-07-21 19:36:31,523] Clicou no network
+|INFO| [2025-07-21 19:36:32,126] Clicou no GPON WAN dentro da barra lateral
+|INFO| [2025-07-21 19:36:32,127] Aguardando as linhas da tabela WAN...
+|INFO| [2025-07-21 19:36:32,725] Linhas carregadas!
+|INFO| [2025-07-21 19:36:32,827] Botão editar da Internet clicado com sucesso!
+|INFO| [2025-07-21 19:36:33,915] Preencheu o login PPPoE com: 7717gabriel
+|INFO| [2025-07-21 19:36:33,986] Clicou no botão para salvar
+|INFO| [2025-07-21 19:36:33,986] ✅ PPPoE trocado com sucesso!
+|INFO| [2025-07-21 22:55:37,031] Iniciando automação...
+|INFO| [2025-07-21 22:56:13,259] Entrou na tela de login: http://192.168.2.254
+|INFO| [2025-07-21 22:56:13,578] Preencheu a senha do roteador
+|INFO| [2025-07-21 22:56:13,769] Clicou no botão de login
+|INFO| [2025-07-21 22:56:19,323] Fez login no roteador
+|INFO| [2025-07-21 22:56:19,369] Clicou no advanced
+|INFO| [2025-07-21 22:56:20,940] Clicou no network
+|INFO| [2025-07-21 22:56:21,571] Clicou no GPON WAN dentro da barra lateral
+|INFO| [2025-07-21 22:56:21,572] Aguardando as linhas da tabela WAN...
+|INFO| [2025-07-21 22:56:21,867] Linhas carregadas!
+|INFO| [2025-07-21 22:56:21,956] Botão editar da Internet clicado com sucesso!
+|INFO| [2025-07-21 22:56:23,130] Preencheu o login PPPoE com: 12113gabriel
+|INFO| [2025-07-21 22:56:23,196] Clicou no botão para salvar
+|INFO| [2025-07-21 22:56:23,196] ✅ PPPoE trocado com sucesso!
+|INFO| [2025-07-21 22:56:42,490] Iniciando automação...
+|INFO| [2025-07-21 22:56:44,950] Entrou na tela de login: http://192.168.2.254
+|INFO| [2025-07-21 22:56:44,992] Preencheu a senha do roteador
+|INFO| [2025-07-21 22:56:45,187] Clicou no botão de login
+|INFO| [2025-07-21 22:56:45,220] Clicou no botão para confirmar o login
+|INFO| [2025-07-21 22:56:49,975] Fez login no roteador
+|INFO| [2025-07-21 22:56:50,144] Clicou no advanced
+|INFO| [2025-07-21 22:56:51,697] Clicou no network
+|INFO| [2025-07-21 22:56:51,795] Clicou no GPON WAN dentro da barra lateral
+|INFO| [2025-07-21 22:56:51,796] Aguardando as linhas da tabela WAN...
+|INFO| [2025-07-21 22:56:52,037] Linhas carregadas!
+|INFO| [2025-07-21 22:56:52,248] Botão editar da Internet clicado com sucesso!
+|INFO| [2025-07-21 22:56:53,250] Preencheu o login PPPoE com: 12113gabriel
+|INFO| [2025-07-21 22:56:53,317] Clicou no botão para salvar
+|INFO| [2025-07-21 22:56:53,318] ✅ PPPoE trocado com sucesso!
+|INFO| [2025-07-21 22:57:17,046] Iniciando automação...
+|INFO| [2025-07-21 22:57:19,386] Entrou na tela de login: http://192.168.2.254
+|INFO| [2025-07-21 22:57:19,435] Preencheu a senha do roteador
+|INFO| [2025-07-21 22:57:19,633] Clicou no botão de login
+|INFO| [2025-07-21 22:57:19,680] Clicou no botão para confirmar o login
+|INFO| [2025-07-21 22:57:24,060] Fez login no roteador
+|INFO| [2025-07-21 22:57:24,335] Clicou no advanced
+|INFO| [2025-07-21 22:57:25,886] Clicou no network
+|INFO| [2025-07-21 22:57:26,526] Clicou no GPON WAN dentro da barra lateral
+|INFO| [2025-07-21 22:57:26,527] Aguardando as linhas da tabela WAN...
+|INFO| [2025-07-21 22:57:27,367] Linhas carregadas!
+|INFO| [2025-07-21 22:57:27,474] Botão editar da Internet clicado com sucesso!
+|INFO| [2025-07-21 22:57:28,730] Preencheu o login PPPoE com: teste4
+|INFO| [2025-07-21 22:57:28,796] Clicou no botão para salvar
+|INFO| [2025-07-21 22:57:28,797] ✅ PPPoE trocado com sucesso!
+|INFO| [2025-07-21 22:58:12,780] Iniciando automação...
+|INFO| [2025-07-21 22:58:15,149] Entrou na tela de login: http://192.168.2.254
+|INFO| [2025-07-21 22:58:15,202] Preencheu a senha do roteador
+|INFO| [2025-07-21 22:58:15,399] Clicou no botão de login
+|INFO| [2025-07-21 22:58:15,435] Clicou no botão para confirmar o login
+|INFO| [2025-07-21 22:58:19,868] Fez login no roteador
+|INFO| [2025-07-21 22:58:20,057] Clicou no advanced
+|INFO| [2025-07-21 22:58:21,665] Clicou no network
+|INFO| [2025-07-21 22:58:22,355] Clicou no GPON WAN dentro da barra lateral
+|INFO| [2025-07-21 22:58:22,356] Aguardando as linhas da tabela WAN...
+|INFO| [2025-07-21 22:58:22,591] Linhas carregadas!
+|INFO| [2025-07-21 22:58:22,851] Botão editar da Internet clicado com sucesso!
+|INFO| [2025-07-21 22:58:24,023] Preencheu o login PPPoE com: 12113gabriel
+|INFO| [2025-07-21 22:58:24,095] Clicou no botão para salvar
+|INFO| [2025-07-21 22:58:29,097] ✅ PPPoE trocado com sucesso!

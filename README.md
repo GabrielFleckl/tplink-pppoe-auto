@@ -21,6 +21,18 @@ sudo apt install -y chromium-browser chromium-chromedriver
 
 **Chromium e bibliotecas são obrigatórias para rodar o projeto**
 
+# Compatibilidade 
+
+- [ ] xx530
+- [ ] xx530v2
+- [ ] EX520
+- [ ] EX511
+- [ ] EX220
+- [ ] EX141
+- [ ] G5
+- [ ] C5
+- [ ] C20
+
 # Exemplo de execução
 
 `python main.py --url http://192.168.2.254 --senha admin@7777 --pppoe 1234andzilla --modelo xx530`
@@ -36,7 +48,12 @@ sudo apt install -y chromium-browser chromium-chromedriver
 
 # To-do 
 
-- [ ] Verifica o modelo do roteador e roda um metodo proprio para aquele modelo
+- [ ] Testar compatibilidade com modelos TP-LINK 
+- [ ] Verificação automatica de modelo
+- [ ] --url: por apenas o IP, sem protocolo
+- [ ] Adicionar o /superadmin no roteador 
+- [ ] Colocar mais args
+  - [ ] ``` bash --band_steering <yes|no> --ssid "Nome wifi" --ssid_pass "senha wifi" ```
 - [x] Tornas args obrigatórios por padrão 
 - [x] verificar se não vai mandar infos erradas antes de executar
 - [x] Rodar em segundo plano por padrão
@@ -46,12 +63,6 @@ sudo apt install -y chromium-browser chromium-chromedriver
 - [x] Teste no Ubuntu Server
 - [x] Log de ações feitas pela automação no terminal
 - [x] Pasta de logs
-- [ ] Testar compatibilidade com modelos TP-LINK 
-  - [x] xx530
-  - [x] xx530v2
-  - [ ] EX520
-  - [ ] EX511
-  - [ ] EX220
-  - [ ] EX141
-  - [ ] C20
+
+  
   

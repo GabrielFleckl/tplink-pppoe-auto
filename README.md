@@ -1,68 +1,89 @@
-# Projeto
-> Automação para trocar o PPPoE de um roteador TP-LINK
+> [!NOTE]  
+> **Creating a virtual environment is optional. You can skip to step 3 if you’re not interested in using one.**
 
-# Rodar no terminal na pasta raiz e ser feliz
+# Installation
 
-> **O venv é opcional, você pode pular para o passo 3. caso não tenha interesse em criar**
+1. **Create a virtual environment (optional):**  
+   ```bash
+   sudo apt install python3.12-venv
+   python -m venv venv
+   ```
 
-1. Crie um venv: 
-  - `sudo apt install python3.12-venv`
-  - `python -m venv venv`
-2. Execute o venv: `source venv/bin/activate`
-3. Instale os requisitos: `pip install -r requirements.txt`
-4. Baixe o Chromium: 
+2. **Activate the virtual environment:**  
+   ```bash
+   source venv/bin/activate
+   ```
 
-``` bash 
-sudo apt update
-sudo apt install -y chromium-browser chromium-chromedriver
+3. **Install the dependencies:**  
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Install Chromium and Chromedriver:**  
+   ```bash
+   sudo apt update
+   sudo apt install -y chromium-browser chromium-chromedriver
+   ```
+
+5. **You're ready to go! 🚀**
+
+> [!IMPORTANT]  
+> **Chromium and its libraries are required for this project to run.**
+
+---
+
+# Compatibility
+
+- [ ] xx530  
+- [ ] xx530v2  
+- [ ] EX520  
+- [ ] EX511  
+- [ ] EX220  
+- [ ] EX141  
+- [ ] G5  
+- [ ] C5  
+- [ ] C20  
+
+---
+
+# Example Usage
+
+```bash
+python main.py --url http://192.168.2.254 --senha admin@7777 --pppoe 1234andzilla --modelo xx530
 ```
 
-5. Seja feliz
+**Notes:**
 
-**Chromium e bibliotecas são obrigatórias para rodar o projeto**
+- The `--url` must use `http` or `https`.
+- All flags are required and must not be empty.
 
-# Compatibilidade 
+## Available Flags
 
-- [ ] xx530
-- [ ] xx530v2
-- [ ] EX520
-- [ ] EX511
-- [ ] EX220
-- [ ] EX141
-- [ ] G5
-- [ ] C5
-- [ ] C20
+| Flag        | Description                |
+|-------------|----------------------------|
+| `--url`     | Router URL                 |
+| `--senha`   | Router password            |
+| `--pppoe`   | PPPoE login                |
+| `--modelo`  | Router model               |
 
-# Exemplo de execução
+---
 
-`python main.py --url http://192.168.2.254 --senha admin@7777 --pppoe 1234andzilla --modelo xx530`
+# To-Do
 
-- URL precisa ser `http` ou `https`
-- Nenhum argumento pode ser vazio
-
-  ## Flags
-  - `--url` (Link para o roteador)
-  - `--senha` (Senha do roteador)
-  - `--pppoe` (Login PPPoE)
-  - `--modelo` (Modelo do roteador)
-
-# To-do 
-
-- [ ] Testar compatibilidade com modelos TP-LINK 
-- [ ] Verificação automatica de modelo
-- [ ] --url: por apenas o IP, sem protocolo
-- [ ] Adicionar o /superadmin no roteador 
-- [ ] Colocar mais args
-  - [ ] ``` bash --band_steering <yes|no> --ssid "Nome wifi" --ssid_pass "senha wifi" ```
-- [x] Tornas args obrigatórios por padrão 
-- [x] verificar se não vai mandar infos erradas antes de executar
-- [x] Rodar em segundo plano por padrão
-- [x] Rodar sem precisar instalar um navegador
-- [x] Teste no Linux
-- [x] Validar URL e senha do roteador
-- [x] Teste no Ubuntu Server
-- [x] Log de ações feitas pela automação no terminal
-- [x] Pasta de logs
-
-  
-  
+- [ ] Test compatibility with more TP-LINK models  
+- [ ] Automatic model detection  
+- [ ] Allow IP-only in `--url` (without protocol)  
+- [ ] Add `/superadmin` to router URL automatically  
+- [ ] Add more arguments:
+  - [ ] `--band_steering <yes|no>`  
+  - [ ] `--ssid "WiFi name"`  
+  - [ ] `--ssid_pass "WiFi password"`  
+- [x] Make all arguments required by default  
+- [x] Validate input data before execution  
+- [x] Run in background by default  
+- [x] Run without needing a browser installed  
+- [x] Tested on Linux  
+- [x] Validate router URL and password  
+- [x] Tested on Ubuntu Server  
+- [x] Log all automation actions to terminal  
+- [x] Create a logs directory  

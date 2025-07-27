@@ -1,7 +1,7 @@
+# Installation
+
 > [!NOTE]  
 > **Creating a virtual environment is optional. You can skip to step 3 if you’re not interested in using one.**
-
-# Installation
 
 1. **Create a virtual environment (optional):**  
    ```bash
@@ -26,9 +26,6 @@
    ```
 
 5. **You're ready to go! 🚀**
-
-> [!IMPORTANT]  
-> **Chromium and its libraries are required for this project to run.**
 
 ---
 

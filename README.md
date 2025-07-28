@@ -46,7 +46,7 @@
 # Example Usage
 
 ```bash
-python main.py --url http://192.168.2.254 --senha admin@7777 --pppoe 1234andzilla --modelo xx530
+python main.py --url 192.168.2.254 --senha admin@7777 --pppoe 1234andzilla --modelo xx530
 ```
 
 **Notes:**
@@ -69,7 +69,7 @@ python main.py --url http://192.168.2.254 --senha admin@7777 --pppoe 1234andzill
 
 - [ ] Test compatibility with more TP-LINK models  
 - [ ] Automatic model detection  
-- [ ] Allow IP-only in `--url` (without protocol)  
+- [x] Allow IP-only in `--url` (without protocol)  
 - [ ] Add `/superadmin` to router URL automatically  
 - [ ] Add more arguments:
   - [ ] `--band_steering <yes|no>`  

@@ -10,19 +10,22 @@ def executar_tp_link_xx530(url, senha, pppoe_login):
     nav = configurar_driver()
     wait = WebDriverWait(nav, 15)
 
+    formatted_url = f"http://{url}/"
+
     def realizar_login():
-        if not url.startswith("http"):
-            logging.error("❌ A URL deve começar com 'http://' ou 'https://'.")
+        if url.startswith("http"):
+            logging.error("❌ A URL deve conter apenas o IP do roteador.")
             nav.quit()
             return False
         try:
-            nav.get(url)
+            # http://192.168.2.254/
+            nav.get(formatted_url)
         except WebDriverException:
             logging.error("❌ Erro ao acessar a URL do roteador.")
             nav.quit()
             return False
         try:
-            logging.info("Entrou na tela de login: " + url)
+            logging.info("Entrou na tela de login: " + formatted_url)
             login_input = wait.until(EC.visibility_of_element_located((By.ID, "pc-login-password")))
             nav.execute_script("arguments[0].scrollIntoView(true);", login_input)
             login_input.send_keys(senha)

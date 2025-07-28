@@ -75,6 +75,7 @@ python main.py --url 192.168.2.254 --senha admin@7777 --pppoe 1234andzilla --mod
   - [ ] `--band_steering <yes|no>`  
   - [ ] `--ssid "WiFi name"`  
   - [ ] `--ssid_pass "WiFi password"`  
+- [x] Check if the pppoe save button was pressed
 - [x] Make all arguments required by default  
 - [x] Validate input data before execution  
 - [x] Run in background by default  

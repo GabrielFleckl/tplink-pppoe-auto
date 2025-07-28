@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from utils.driver import configurar_driver
 
+
 def executar_tp_link_xx530(url, senha, pppoe_login):
     nav = configurar_driver()
     wait = WebDriverWait(nav, 15)
@@ -78,6 +79,16 @@ def executar_tp_link_xx530(url, senha, pppoe_login):
         save_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="saveConnBtn"]')))
         nav.execute_script("arguments[0].scrollIntoView(true);", save_button)
         nav.execute_script("arguments[0].click();", save_button)
+
+        try:
+            WebDriverWait(nav, 10).until(
+                EC.presence_of_element_located(
+                    (By.XPATH, '//*[@id="divPage"]/div[15]/div[2]/div/form/div/span[@class="load"]')
+                )
+            )
+            logging.info("Botão para salver PPPoE pressionado")
+        except TimeoutException:
+            logging.warning("⚠️ O spinner não apareceu a tempo.")
 
     try:
         if realizar_login() and navegar_para_pppoe():

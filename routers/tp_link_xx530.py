@@ -11,7 +11,7 @@ def executar_tp_link_xx530(url, senha, pppoe_login):
     nav = configurar_driver()
     wait = WebDriverWait(nav, 15)
 
-    formatted_url = f"http://{url}/"
+    formatted_url = f"http://{url}/superadmin"
 
     def realizar_login():
         if url.startswith("http"):
@@ -91,7 +91,7 @@ def executar_tp_link_xx530(url, senha, pppoe_login):
             logging.info("Spinner sumiu.")
 
             logging.info("Botão para salver PPPoE pressionado")
-            
+
         except TimeoutException:
             logging.warning("⚠️ O spinner não apareceu a tempo.")
 

@@ -64,6 +64,7 @@ python main.py --url 192.168.2.254 --senha admin@7777 --pppoe 1234andzilla --mod
 # To-Do
 
 - [ ] Test compatibility with more TP-LINK models  
+- [ ] Remove spinner validator
 - [ ] Automatic model detection  
 - [x] Allow IP-only in `--url` (without protocol)  
 - [ ] Add `/superadmin` to router URL automatically  

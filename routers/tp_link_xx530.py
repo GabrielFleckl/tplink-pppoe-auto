@@ -80,13 +80,18 @@ def executar_tp_link_xx530(url, senha, pppoe_login):
         nav.execute_script("arguments[0].scrollIntoView(true);", save_button)
         nav.execute_script("arguments[0].click();", save_button)
 
+        spinner = nav.find_element(By.ID, "g-loading-container")
+
         try:
-            WebDriverWait(nav, 10).until(
-                EC.presence_of_element_located(
-                    (By.XPATH, '//*[@id="divPage"]/div[15]/div[2]/div/form/div/span[@class="load"]')
-                )
-            )
+
+            WebDriverWait(nav, 10).until(lambda d: "display: none" not in spinner.get_attribute("style"))
+            logging.info("Spinner apareceu.")
+
+            WebDriverWait(nav, 10).until(lambda d: "display: none" in spinner.get_attribute("style"))
+            logging.info("Spinner sumiu.")
+
             logging.info("Botão para salver PPPoE pressionado")
+            
         except TimeoutException:
             logging.warning("⚠️ O spinner não apareceu a tempo.")
 

@@ -5,6 +5,7 @@ from selenium.common.exceptions import StaleElementReferenceException, TimeoutEx
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from utils.driver import configurar_driver
+from utils.validators import valida_modelo
 
 
 def executar_tp_link_xx530(url, senha, pppoe_login):
@@ -14,17 +15,25 @@ def executar_tp_link_xx530(url, senha, pppoe_login):
     formatted_url = f"http://{url}/superadmin"
 
     def realizar_login():
+
         if url.startswith("http"):
             logging.error("❌ A URL deve conter apenas o IP do roteador.")
             nav.quit()
             return False
+        
         try:
             # http://192.168.2.254/
             nav.get(formatted_url)
+
+            # Model validation
+            model = wait.until(EC.visibility_of_element_located((By.ID, "pc-bot-productName")))
+            logging.info(f"Modelo identificado: {model.text}")
         except WebDriverException:
             logging.error("❌ Erro ao acessar a URL do roteador.")
             nav.quit()
             return False
+        
+    
         try:
             logging.info("Entrou na tela de login: " + formatted_url)
             login_input = wait.until(EC.visibility_of_element_located((By.ID, "pc-login-password")))
